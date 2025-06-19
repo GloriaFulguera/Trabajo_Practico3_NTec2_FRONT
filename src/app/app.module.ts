@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './Components/container/container.component';
@@ -18,7 +21,9 @@ import { ProductosComponent } from './Pages/productos/productos.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
