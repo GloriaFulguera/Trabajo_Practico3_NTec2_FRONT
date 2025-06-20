@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../../Services/categorias.service';
 import { ProductosService } from '../../Services/productos.service';
+import { MovimientosService } from '../../Services/movimientos.service';
 
 @Component({
   selector: 'app-movimientos',
@@ -11,18 +12,19 @@ import { ProductosService } from '../../Services/productos.service';
 export class MovimientosComponent implements OnInit{
   Categorias: any;
   Productos: any;
-  Movimientos: any[] = [];
+  Movimientos: any;
 
   CategoriaId: any;
   ProductoId: any;
-  TipoMovimiento: string = '';
-  Cantidad: number = 0;
-  Descripcion: string = '';
+  TipoMovimiento: any;
+  Cantidad: any;
+  Descripcion: any;
 
-  constructor(private categoriaService:CategoriasService, private productoService:ProductosService){}
+  constructor(private categoriaService:CategoriasService, private productoService:ProductosService,private service:MovimientosService){}
 
   ngOnInit(): void {
     this.GetCategorias();
+    this.GetMovimientos();
   }
 
   GetCategorias(){
@@ -34,6 +36,23 @@ export class MovimientosComponent implements OnInit{
     console.log("estoy guardando: "+this.CategoriaId);
     return this.productoService.GetProductoPorCategoria(this.CategoriaId).subscribe(x=>{
       this.Productos=x;
+    })
+  }
+  GetMovimientos(){
+    return this.service.GetMovimientos().subscribe(x=>{
+      this.Movimientos=x;
+    })
+  }
+  CreateMovimiento(){
+    let movimiento={
+      producto_id:this.ProductoId,
+      tipo:this.TipoMovimiento,
+      cantidad:this.Cantidad.toString(),
+      observacion:this.Descripcion
+    }
+    console.log("tengo esto: "+movimiento)
+    return this.service.CreateMovimiento(movimiento).subscribe(x=>{
+      location.reload();
     })
   }
 }
