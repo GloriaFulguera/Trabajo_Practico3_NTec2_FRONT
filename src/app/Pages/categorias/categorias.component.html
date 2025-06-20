@@ -5,7 +5,7 @@
 
     <div class="row">
       <div class="col" style="text-align: end;">
-        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#CrearModal">Crear</button>
+        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#CrearModal" (click)="LimpiarInput()">Crear</button>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>¿Esta seguro/a que quiere eliminar la categoria?: </p><br>
+        <p>¿Esta seguro/a que quiere eliminar la categoria? </p>
         <p><strong>{{CategoriaSeleccionada?.nombre}}</strong></p>
       </div>
       <div class="modal-footer">

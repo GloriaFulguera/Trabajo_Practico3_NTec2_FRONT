@@ -50,4 +50,7 @@ export class CategoriasComponent implements OnInit {
       location.reload()
     })
   }
+  LimpiarInput(){
+    this.Nombre="";
+  }
 }
