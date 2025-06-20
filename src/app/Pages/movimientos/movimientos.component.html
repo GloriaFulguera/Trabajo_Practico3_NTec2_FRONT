@@ -1,0 +1,62 @@
+
+<div class="container py-4">
+  <div class="row mb-3">
+    <h3 class="mb-4">Movimientos</h3>
+    <div class="col-md-6">
+      <label for="categoria">Categoría</label>
+      <select id="categoria" class="form-select" [(ngModel)]="CategoriaId" (change)="GetProductosPorCategoria()">
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let cat of Categorias" [value]="cat.id">{{ cat.nombre }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="producto">Producto</label>
+      <select id="producto" class="form-select" [(ngModel)]="ProductoId">
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let prod of Productos" [value]="prod.id">{{ prod.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" class="form-select" [(ngModel)]="TipoMovimiento">
+        <option value="" disabled selected>Select</option>
+        <option value="entrada">Entrada</option>
+        <option value="salida">Salida</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="cantidad">Cantidad</label>
+      <input id="cantidad" type="number" class="form-control" [(ngModel)]="Cantidad" />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" class="form-control" rows="3" [(ngModel)]="Descripcion"></textarea>
+  </div>
+
+  <div class="mb-4">
+    <button class="btn btn-primary" >Guardar</button>
+  </div>
+
+  <h5>Movimientos</h5>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mov of Movimientos">
+        <td>{{ mov.id }}</td>
+        <td>{{ mov.nombre }}</td>
+        <td>{{ mov.fecha | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

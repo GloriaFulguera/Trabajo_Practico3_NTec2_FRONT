@@ -10,6 +10,7 @@ import { ContainerComponent } from './Components/container/container.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { CategoriasComponent } from './Pages/categorias/categorias.component';
 import { ProductosComponent } from './Pages/productos/productos.component';
+import { MovimientosComponent } from './Pages/movimientos/movimientos.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductosComponent } from './Pages/productos/productos.component';
     ContainerComponent,
     NavbarComponent,
     CategoriasComponent,
-    ProductosComponent
+    ProductosComponent,
+    MovimientosComponent
   ],
   imports: [
     BrowserModule,

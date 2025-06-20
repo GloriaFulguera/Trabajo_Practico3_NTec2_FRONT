@@ -20,4 +20,7 @@ export class ProductosService {
   DeleteProducto(id:any){
     return this.http.delete(this.url+"DeleteProducto?id="+id);
   }
+  GetProductoPorCategoria(id:any){
+    return this.http.get(this.url+"GetProductosPorCategoria?id="+id);
+  }
 }
