@@ -1,1 +1,90 @@
-<p>categorias works!</p>
+<div class="d-flex justify-content-center pt-4">
+  <div class="w-100" style="max-width: 1000px;">
+
+    <h3 class="mb-3">Categorías</h3>
+
+    <div class="row">
+      <div class="col" style="text-align: end;">
+        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#CrearModal">Crear</button>
+      </div>
+    </div>
+
+    <table class="table table-sm table-striped table-bordered shadow-sm rounded">
+      <thead>
+        <tr>
+          <th scope="col">Acciones</th>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of DataSource">
+          <td style="width: 20%;">
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#EliminarModal" (click)="CategoriaSeleccionada=x">Eliminar</button>&nbsp;
+            <button class="btn btn-warning btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#EditarModal" (click)="CategoriaSeleccionada=x; Nombre=x.nombre">Editar</button>
+          </td>
+          <td>{{x.id}}</td>
+          <td>{{x.nombre}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="CrearModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Categoria Nueva</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label>Nombre</label>
+        <input class="form-control" type="text" [(ngModel)]="Nombre">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" (click)="CreateCategoria()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="EliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Categoria</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Esta seguro/a que quiere eliminar la categoria?: </p><br>
+        <p><strong>{{CategoriaSeleccionada?.nombre}}</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" (click)="DeleteCategoria()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="EditarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Categoria</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label>Nombre</label>
+        <input class="form-control" type="text" [(ngModel)]="Nombre">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" (click)="EditCategoria()">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
