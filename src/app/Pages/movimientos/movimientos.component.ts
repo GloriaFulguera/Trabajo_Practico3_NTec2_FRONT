@@ -52,7 +52,12 @@ export class MovimientosComponent implements OnInit{
     }
     console.log("tengo esto: "+movimiento)
     return this.service.CreateMovimiento(movimiento).subscribe(x=>{
-      location.reload();
+      if(x==false){
+        alert("No se pudo ingresar el movimiento")
+      }
+      else{
+        location.reload();
+      }
     })
   }
 }
