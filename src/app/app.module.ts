@@ -11,6 +11,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { CategoriasComponent } from './Pages/categorias/categorias.component';
 import { ProductosComponent } from './Pages/productos/productos.component';
 import { MovimientosComponent } from './Pages/movimientos/movimientos.component';
+import { LoginComponent } from './Components/login/login.component';
+import { LockComponent } from './Components/lock/lock.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MovimientosComponent } from './Pages/movimientos/movimientos.component'
     NavbarComponent,
     CategoriasComponent,
     ProductosComponent,
-    MovimientosComponent
+    MovimientosComponent,
+    LoginComponent,
+    LockComponent
   ],
   imports: [
     BrowserModule,
