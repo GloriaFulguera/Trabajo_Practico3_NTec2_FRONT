@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../../Services/categorias.service';
 import { ProductosService } from '../../Services/productos.service';
 import { MovimientosService } from '../../Services/movimientos.service';
+import * as XLSX from 'xlsx';
+import { Xliff } from '@angular/compiler';
 
 @Component({
   selector: 'app-movimientos',
@@ -59,5 +61,12 @@ export class MovimientosComponent implements OnInit{
         location.reload();
       }
     })
+  }
+  Exportar_Excel(){
+    const elementTable=document.getElementById('tabla');
+    const hoja:XLSX.WorkSheet=XLSX.utils.table_to_sheet(elementTable);
+    const libro:XLSX.WorkBook=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(libro,hoja,'datos');
+    XLSX.writeFile(libro,'movimientos.xlsx');
   }
 }
